@@ -16,12 +16,17 @@ desenvolvimento está bem no início, ele precisa que a estrutura do backend sej
 para criação de uma loja virtual.
 Neste negócio teremos de início (MVP) as seguintes informações:
 ● Endereco: (cep, rua, numero, bairro, cidade, complemento, referencia )
+
 ● Cliente: (nome, email, celular, cpfOuCnpj, Endereco)
+
 ● Categoria: (Nacionais, Importados, Promocao, FreteGratis)
+
 ● FormaDePagamento (Cartão de Crédito, Cartão de débito, Pix, Boleto, PicPay)
+
 ● Produto: (codigo, descricao, Categoria, quantidade, valor, desconto)
-● Pedido: (numero, data, lista de produtos, cliente, valorFrete, desconto, forma
-DePagamento, valorTotal)
+
+● Pedido: (numero, data, lista de produtos, cliente, valorFrete, desconto, forma DePagamento, valorTotal)
+
 ● Empresa:(nome, Endereco, lista de pedidos)
 
 Objetivos:
