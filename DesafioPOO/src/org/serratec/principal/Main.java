@@ -15,7 +15,7 @@ import org.serratec.enumeradores.FormDePagamento;
 public class Main {
 	public static void main(String[] args) {
 		Cliente c1 = new Cliente("Francisco Peixoto", "francisco@gmail.com", "(32)99656-9566", "107965858-85",
-				new Endereco(88880234, "Manoel de Almeida Costa", "347", "Vila Reis", "Cataguases-MG", null, null));
+				new Endereco(88880234, "Manoel de Almeida Costa", "347", "Vila Reis", "Cataguases-MG", null, "Próximo ao Postinho de Saúde"));
 		Cliente c2 = new Cliente("Emanuel Medeiros", "emanuel@gmail.com", "(21)3333-9566", "11234858-85",
 				new Endereco(88870234, "Jucelino Qubixeque", "123", "Granjaria", "Cataguases-MG", null, null));
 		Cliente c3 = new Cliente("Marcos Fontenelle", "marcos@gmail.com", "(11)99656-5555", "1065255858-85",
@@ -36,21 +36,21 @@ public class Main {
 		Cliente c10 = new Cliente("Murici Ramalho", "murici@gmail.com", "(99)55555-9566", "2221565858-85",
 				new Endereco(545770234, "São Paulo Paulista", "474", "Carijós", "Cataguases-MG", null, null));
 
-		Produto p1 = new Produto(100, "Notebook H20VP", Categoria.NACIONAIS, 50, 1500.00, .05);
-		Produto p2 = new Produto(159, "Galaxy A20", Categoria.FRETEGRATIS, 50, 1200.0, 0);
-		Produto p3 = new Produto(208, "Pen Drive 1T", Categoria.IMPORTADOS, 50, 200, 0);
+		Produto p1 = new Produto(100, "Notebook - H20VP", Categoria.NACIONAIS, 50, 1500.00, .05);
+		Produto p2 = new Produto(159, "Galaxy   -   A20", Categoria.FRETEGRATIS, 50, 1200.0, 0);
+		Produto p3 = new Produto(208, "Pen Drive  -  1T", Categoria.IMPORTADOS, 50, 200, 0);
 		Produto p4 = new Produto(257, "Teclado Bluetoth", Categoria.NACIONAIS, 50, 100, 0);
-		Produto p5 = new Produto(306, "Placa de Video GForce", Categoria.PROMOCAO, 500, 0, 0);
-		Produto p6 = new Produto(355, "Mini Drone Spy", Categoria.FRETEGRATIS, 50, 10000, 0);
-		Produto p7 = new Produto(404, "IA doméstica", Categoria.IMPORTADOS, 50, 15000, 0);
-		Produto p8 = new Produto(453, "Fone de ouvido Wireless", Categoria.NACIONAIS, 50, 80, 0);
-		Produto p9 = new Produto(502, "Caozinho robótico", Categoria.PROMOCAO, 50, 5500.50, 0);
-		Produto p10 = new Produto(551, "Iphone 50S", Categoria.FRETEGRATIS, 50, 5000, 0);
+		Produto p5 = new Produto(306, "Placa NVI GForce", Categoria.PROMOCAO, 500, 0, 0);
+		Produto p6 = new Produto(355, "Mini  Drone  Spy", Categoria.FRETEGRATIS, 50, 10000, 0);
+		Produto p7 = new Produto(404, "IA  -  doméstica", Categoria.IMPORTADOS, 50, 15000, 0);
+		Produto p8 = new Produto(453, "Fone    Wireless", Categoria.NACIONAIS, 50, 80, 0);
+		Produto p9 = new Produto(502, "Cao SBD robótico", Categoria.PROMOCAO, 50, 5500.50, 0);
+		Produto p10 = new Produto(551,"Iphone 50S2021  ", Categoria.FRETEGRATIS, 50, 5000, 0);
 
 		Empresa paradise = new Empresa("Paradise Tecnolgia",
 				new Endereco(22565566, "Avenida Guido", "10", "Centro", "Muriaé", "Ao lado do Rio", null));
 
-		Pedido ped1 = new Pedido(1, LocalDate.parse("2020-05-10"), c1, 35.25, 0.05, FormDePagamento.BOLETO);
+		Pedido ped1 = new Pedido(1, LocalDate.parse("2020-05-10"), c1, 35.25, 0.05, FormDePagamento.BOLETO,2);
 		List<Produto> listProdutosPed1 = new ArrayList<>();
 		listProdutosPed1.add(p1);
 		listProdutosPed1.add(p3);
@@ -59,7 +59,7 @@ public class Main {
 		ped1.setListProdutos(listProdutosPed1);
 		ped1.calcularTotal(listProdutosPed1);
 
-		Pedido ped2 = new Pedido(2, LocalDate.parse("2020-05-11"), c2, 45.25, 0.1, FormDePagamento.BOLETO);
+		Pedido ped2 = new Pedido(2, LocalDate.parse("2020-05-11"), c2, 45.25, 0.1, FormDePagamento.BOLETO,1);
 		List<Produto> listProdutosPed2 = new ArrayList<>();
 		listProdutosPed2.add(p2);
 		listProdutosPed2.add(p4);
@@ -68,7 +68,7 @@ public class Main {
 		ped2.setListProdutos(listProdutosPed2);
 		ped2.calcularTotal(listProdutosPed2);
 		
-		Pedido ped3 = new Pedido(3, LocalDate.parse("2020-05-12"), c3, 12.25, 0.15, FormDePagamento.CARTAODEDÉBITO);
+		Pedido ped3 = new Pedido(3, LocalDate.parse("2020-05-12"), c3, 12.25, 0.15, FormDePagamento.CARTAODEDÉBITO,1);
 		List<Produto> listProdutosPed3 = new ArrayList<>();
 		listProdutosPed3.add(p1);
 		listProdutosPed3.add(p5);
@@ -77,7 +77,7 @@ public class Main {
 		ped3.setListProdutos(listProdutosPed3);
 		ped3.calcularTotal(listProdutosPed3);
 		
-		Pedido ped4 = new Pedido(4, LocalDate.parse("2020-05-10"), c4, 50.25, 0.05, FormDePagamento.PICPAY);
+		Pedido ped4 = new Pedido(4, LocalDate.parse("2020-05-10"), c4, 50.25, 0.05, FormDePagamento.PICPAY,1);
 		List<Produto> listProdutosPed4 = new ArrayList<>();
 		listProdutosPed4.add(p1);
 		listProdutosPed4.add(p2);
@@ -86,7 +86,7 @@ public class Main {
 		ped4.setListProdutos(listProdutosPed4);
 		ped4.calcularTotal(listProdutosPed4);
 		
-		Pedido ped5 = new Pedido(5, LocalDate.parse("2020-05-11"), c5, 72.25, 0.14, FormDePagamento.PIX);
+		Pedido ped5 = new Pedido(5, LocalDate.parse("2020-05-11"), c5, 72.25, 0.14, FormDePagamento.PIX,1);
 		List<Produto> listProdutosPed5 = new ArrayList<>();
 		listProdutosPed5.add(p10);
 		listProdutosPed5.add(p9);
@@ -95,7 +95,7 @@ public class Main {
 		ped5.setListProdutos(listProdutosPed5);
 		ped5.calcularTotal(listProdutosPed5);
 		
-		Pedido ped6 = new Pedido(6, LocalDate.parse("2020-05-12"), c6, 22.25, 0.04, FormDePagamento.BOLETO);
+		Pedido ped6 = new Pedido(6, LocalDate.parse("2020-05-12"), c6, 22.25, 0.04, FormDePagamento.BOLETO,1);
 		List<Produto> listProdutosPed6 = new ArrayList<>();
 		listProdutosPed6.add(p10);
 		listProdutosPed6.add(p7);
@@ -104,7 +104,7 @@ public class Main {
 		ped6.setListProdutos(listProdutosPed6);
 		ped6.calcularTotal(listProdutosPed6);
 		
-		Pedido ped7 = new Pedido(7, LocalDate.parse("2020-05-10"), c7, 55.25, 0.05, FormDePagamento.CARTAODECREDITO);
+		Pedido ped7 = new Pedido(7, LocalDate.parse("2020-05-10"), c7, 55.25, 0.05, FormDePagamento.CARTAODECREDITO,1);
 		List<Produto> listProdutosPed7 = new ArrayList<>();
 		listProdutosPed7.add(p8);
 		listProdutosPed7.add(p1);
@@ -113,7 +113,7 @@ public class Main {
 		ped7.setListProdutos(listProdutosPed7);
 		ped7.calcularTotal(listProdutosPed7);
 		
-		Pedido ped8 = new Pedido(8, LocalDate.parse("2020-05-11"), c8, 36.25, 0.05, FormDePagamento.PICPAY);
+		Pedido ped8 = new Pedido(8, LocalDate.parse("2020-05-11"), c8, 36.25, 0.05, FormDePagamento.PICPAY,1);
 		List<Produto> listProdutosPed8 = new ArrayList<>();
 		listProdutosPed8.add(p10);
 		listProdutosPed8.add(p7);
@@ -122,7 +122,7 @@ public class Main {
 		ped8.setListProdutos(listProdutosPed8);
 		ped8.calcularTotal(listProdutosPed8);
 		
-		Pedido ped9 = new Pedido(9, LocalDate.parse("2020-05-12"), c9, 5.25, 0.1, FormDePagamento.BOLETO);
+		Pedido ped9 = new Pedido(9, LocalDate.parse("2020-05-09"), c9, 5.25, 0.1, FormDePagamento.BOLETO,1);
 		List<Produto> listProdutosPed9 = new ArrayList<>();
 		listProdutosPed9.add(p9);
 		listProdutosPed9.add(p7);
@@ -131,7 +131,7 @@ public class Main {
 		ped9.setListProdutos(listProdutosPed9);
 		ped9.calcularTotal(listProdutosPed9);
 		
-		Pedido ped10= new Pedido(10, LocalDate.parse("2020-05-10"), c10, 52.25, 0.1, FormDePagamento.CARTAODECREDITO);
+		Pedido ped10= new Pedido(10, LocalDate.parse("2020-05-01"), c10, 52.25, 0.1, FormDePagamento.CARTAODECREDITO,1);
 		List<Produto> listProdutosPed10 = new ArrayList<>();
 		listProdutosPed10.add(p6);
 		listProdutosPed10.add(p5);
@@ -153,16 +153,32 @@ public class Main {
 		listaPedidos.add(ped10);
 		paradise.setListPedidos(listaPedidos);
 		
+		//Método que retorna o valor total faturado com base nos pedidos
+		System.out.println("==Valor total faturado com base nos pedidos==");
+		System.out.println(paradise.calcularValorFaturado());
+
+		System.out.println("\n");
+		
 		//Retorno do valor faturado da empresa por perído. Período passado com parâmetro da função.
-		System.out.println("R$ "+paradise.calcularValorFaturado(LocalDate.parse("2020-05-10"), LocalDate.parse("2020-05-12")));
+		System.out.println("==Valor Faturado por período inicial e final==");
+		System.out.println("R$ "+paradise.calcularValorFaturadoData(LocalDate.parse("2020-05-10"), LocalDate.parse("2020-05-12")));
+		
+		System.out.println("\n");
 		
 		//Qual a forma de pagamento mais utilizada.
+		System.out.println("==Método que retorna a forma de pagamento mais utilizada==");
 		System.out.println(paradise.formaPagamentoMaisUtilizada());
 		
-		//Método para retornar lucro por forma de pagamento.
-		System.out.println(""+FormDePagamento.BOLETO.getNome()+": R$"+paradise.lucroPorFormaPagamento(FormDePagamento.CARTAODECREDITO));
+		System.out.println("\n");
 		
-		//Método Impressão de relatório
-		paradise.imprimirRelatorio();
+		//Método para retornar lucro por forma de pagamento.
+		System.out.println("==Método que retorna o lucro por forma de pagamento==");
+		System.out.println(""+FormDePagamento.BOLETO.getNome()+": R$"+paradise.lucroPorFormaPagamento(FormDePagamento.BOLETO));
+		System.out.println(""+FormDePagamento.CARTAODECREDITO.getNome()+": R$"+paradise.lucroPorFormaPagamento(FormDePagamento.CARTAODECREDITO));
+	
+		
+		System.out.println("\n");
+		//Método Impressão de relatório passando como parâmetro um Cliente e um Pedido.
+		paradise.imprimirRelatorio(c1, ped1);
 	}
 }

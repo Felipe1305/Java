@@ -15,11 +15,12 @@ public class Pedido {
 	private double desconto;
 	private FormDePagamento formaDePagamento;
 	private double valorTotal;
+	private int quantProduto;
 	protected static int contCC = 0, contCD = 0, contPix = 0, ContBol = 0, ContPP = 0;
 	protected static double valorTotalCC = 0, valorTotalCD = 0, valorTotalPix = 0, valorTotalBol = 0, valorTotalPP = 0;
 
 	public Pedido(int numero, LocalDate data, Cliente cliente, double valorFrete, double desconto,
-			FormDePagamento formaDePagamento) {
+			FormDePagamento formaDePagamento, int quantProduto) {
 		super();
 		this.numero = numero;
 		this.data = data;
@@ -43,7 +44,16 @@ public class Pedido {
 			ContBol++;
 
 		}
+		this.quantProduto = quantProduto;
 
+	}
+
+	public int getQuantProduto() {
+		return quantProduto;
+	}
+
+	public void setQuantProduto(int quantProduto) {
+		this.quantProduto = quantProduto;
 	}
 
 	public int getNumero() {
@@ -63,6 +73,12 @@ public class Pedido {
 	}
 
 	public List<Produto> getListProdutos() {
+
+		for (Produto produto : listProdutos) {
+			System.out.println(String.format("%s    %s     %s        R$ %s       R$ %s", produto.getCodigo(),
+					produto.getDescricao(), this.quantProduto, produto.getValor(), (produto.getValor()*this.quantProduto)));
+		}
+
 		return listProdutos;
 	}
 
@@ -113,7 +129,7 @@ public class Pedido {
 	public void calcularTotal(List<Produto> lista) {
 
 		for (Produto produto : lista) {
-			this.valorTotal += produto.getValor();
+			this.valorTotal += produto.getValor()*this.quantProduto;
 		}
 		this.valorTotal -= this.valorTotal * this.getDesconto();
 

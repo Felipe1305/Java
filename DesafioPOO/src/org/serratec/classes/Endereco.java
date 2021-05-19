@@ -75,6 +75,12 @@ public class Endereco {
 	public void setReferencia(String referencia) {
 		this.referencia = referencia;
 	}
+
+	@Override
+	public String toString() {
+		return "Rua: " + rua + ", Nº " + numero + ", Bairro: " + bairro + ", Cidade: "
+				+ cidade + "\nReferencia: " + referencia;
+	}
 	
 	
 

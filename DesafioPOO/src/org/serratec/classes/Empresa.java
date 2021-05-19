@@ -43,8 +43,16 @@ public class Empresa {
 	public void setListPedidos(List<Pedido> listPedidos) {
 		this.listPedidos = listPedidos;
 	}
+	
+	public double calcularValorFaturado() {
+		double valorFaturado2=0;
+		for (Pedido pedido : listPedidos) {
+			valorFaturado2 += pedido.getValorTotal();
+		}
+		return valorFaturado2;
+	}
 
-	public double calcularValorFaturado(LocalDate inicio, LocalDate fim) {
+	public double calcularValorFaturadoData(LocalDate inicio, LocalDate fim) {
 		int a = inicio.getDayOfMonth();
 		int b = fim.getDayOfMonth();
 		double valorFaturado = 0.0;
@@ -53,8 +61,6 @@ public class Empresa {
 			if (pedido.getData().getDayOfMonth() >= a && pedido.getData().getDayOfMonth() <= b) {
 				valorFaturado += pedido.getValorTotal();
 
-			} else {
-				return 0.0;
 			}
 
 		}
@@ -95,7 +101,7 @@ public class Empresa {
 			return 0;
 		}
 	}
-	public void imprimirRelatorio(Cliente c) {
+	public void imprimirRelatorio(Cliente c, Pedido p) {
 		System.out.println("*************************************************************************");
 		System.out.println("**************************  "+this.getNome()+"  *************************");
 		System.out.println("*************************************************************************");
@@ -109,6 +115,16 @@ public class Empresa {
 		System.out.println("\nNome: "+c.getNome());
 		System.out.println("\nCep: "+c.getEndereco().getCep());
 		System.out.println("\nEndereço: "+c.getEndereco());
-		System.out.println("\nReferência: ");
+		System.out.println("\n_______________________________________________________________________");
+		System.out.println("\nCódigo   Descrição  Quantidade   Valor Unitário     ValorTotal");
+		System.out.println("\n_______________________________________________________________________");
+		p.getListProdutos();
+		System.out.println("\n_______________________________________________________________________");
+		System.out.println("Frete:       R$ " + p.getValorFrete());
+		System.out.println("Desconto:    R$ "+(p.getDesconto()*p.getValorTotal()));
+		System.out.println("Valor Total: R$ "+(p.getValorTotal()-p.getValorFrete()));
+		System.out.println("*************************************************************************");
+		System.out.println("*************************************************************************");
+		
 	}
 }
